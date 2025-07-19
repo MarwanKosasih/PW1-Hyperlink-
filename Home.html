@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Web Programming Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .shape:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .shape:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .shape:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    .shape:nth-child(4) {
+      width: 120px;
+      height: 120px;
+      top: 10%;
+      right: 25%;
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+    }
+
+    /* Header Styles */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+      z-index: -1;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      from { filter: brightness(1); }
+      to { filter: brightness(1.2); }
+    }
+
+    .header-subtitle {
+      font-size: 1.3rem;
+      color: var(--gray);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .nav-link:hover::before {
+      left: 0;
+    }
+
+    .nav-link:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    /* Main Content */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    /* Identity Card */
+    .identity-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      animation: slideUp 0.8s ease-out;
+    }
+
+    .identity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .identity-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .identity-avatar {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .identity-info {
+      flex: 1;
+    }
+
+    .identity-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .identity-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .identity-icon {
+      width: 20px;
+      color: var(--primary);
+    }
+
+    .identity-label {
+      font-weight: 600;
+      color: var(--dark);
+      min-width: 80px;
+    }
+
+    .identity-value {
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    /* Sections */
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: slideUp 0.8s ease-out;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .section-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray);
+    }
+
+    /* Tech Stack */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .tech-card {
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border-radius: 16px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
+    }
+
+    .tech-card:hover::before {
+      opacity: 1;
+    }
+
+    .tech-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tech-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .tech-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tech-description {
+      color: var(--gray);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    .footer-heart {
+      color: #ef4444;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 2.5rem;
+      }
+
+      .header-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .nav-menu {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .nav-link {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .main-container {
+        padding: 40px 15px;
+      }
+
+      .identity-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section {
+        padding: 30px 25px;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .identity-card,
+      .section {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animation">
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <h1 class="header-title">PEMROGRAMAN WEB</h1>
+      <p class="header-subtitle">Teknologi Informatika - Universitas Pamulang</p>
+      <div class="header-badge">
+        <i class="fas fa-code"></i> Web Development Journey
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-user"></i> Profil</a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-images"></i> Gallery</a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-envelope"></i> Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="identity-card">
+      <div class="identity-content">
+        <div class="identity-avatar">
+  <img src="/Gambar/marwan.jpg" alt="Foto Marwan" width="80" height="80" style="border-radius: 50%; box-shadow: 0 0 5px rgba(0,0,0,0.2);"><br><br>
+</div>
+
+        <div class="identity-info">
+          <div class="identity-item">
+            <i class="fas fa-user identity-icon"></i>
+            <span class="identity-label">Nama:</span>
+            <span class="identity-value">Marwan Kosasih</span>
+          </div>
+          <div class="identity-item">
+            <i class="fas fa-id-card identity-icon"></i>
+            <span class="identity-label">NIM:</span>
+            <span class="identity-value">221011400057</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Selamat Datang</h2>
+      <div class="section-content">
+        <p>Selamat datang di halaman latihan pemrograman web yang menakjubkan! 🚀</p>
+        <p>Tempat Anda memulai perjalanan menjadi pengembang web profesional, memahami fondasi teknologi modern yang digunakan di dunia industri—dari HTML, CSS, hingga PHP dan database MySQL. Bergabunglah dengan revolusi digital dan kuasai keterampilan yang paling dicari di era modern ini.</p>
+        <p><strong>Belajar hari ini, kuasai masa depan digital!</strong></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Teknologi Web Modern</h2>
+      <div class="section-content">
+        <p>Mari jelajahi teknologi fundamental yang membentuk web modern:</p>
+        
+        <div class="tech-grid">
+          <div class="tech-card">
+            <div class="tech-header">
+              <div class="tech-icon">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="tech-name">HTML5</div>
+            </div>
+            <div class="tech-description">
+              Bahasa markup standar untuk membuat dan menyusun konten halaman web dengan struktur semantik yang kuat.
+            </div>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-header">
+              <div class="tech-icon">
+                <i class="fab fa-css3-alt"></i>
+              </div>
+              <div class="tech-name">CSS3</div>
+            </div>
+            <div class="tech-description">
+              Stylesheet language yang membuat website menjadi indah, responsif, dan interaktif dengan animasi modern.
+            </div>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-header">
+              <div class="tech-icon">
+                <i class="fab fa-php"></i>
+              </div>
+              <div class="tech-name">PHP</div>
+            </div>
+            <div class="tech-description">
+              Bahasa server-side yang powerful untuk membangun aplikasi web dinamis dan interaktif.
+            </div>
+          </div>
+
+          <div class="tech-card">
+            <div class="tech-header">
+              <div class="tech-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="tech-name">MySQL</div>
+            </div>
+            <div class="tech-description">
+              Sistem manajemen database relasional yang handal untuk menyimpan dan mengorganisir data aplikasi.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Marwan Kosasih - Pemrograman Web 1 | Universitas Pamulang</p>
+      <p>Dibuat dengan <span class="footer-heart">❤️</span> untuk pembelajaran web development</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Remove active class from all links
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        // Add active class to clicked link
+        e.target.classList.add('active');
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('.section, .identity-card').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Tech cards hover effect
+    document.querySelectorAll('.tech-card').forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+      
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Parallax effect for floating shapes
+    window.addEventListener('mousemove', (e) => {
+      const shapes = document.querySelectorAll('.shape');
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      shapes.forEach((shape, index) => {
+        const speed = (index + 1) * 0.5;
+        const xPos = (x - 0.5) * speed * 50;
+        const yPos = (y - 0.5) * speed * 50;
+        shape.style.transform = `translate(${xPos}px, ${yPos}px)`;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Saya - Marwan Kosasih</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #6c757d;
+      --background-light: #f8f9fa;
+      --background-dark: #e9ecef;
+      --text-color: #343a40;
+      --card-background: #ffffff;
+      --shadow-light: rgba(0, 0, 0, 0.08);
+      --shadow-medium: rgba(0, 0, 0, 0.15);
+      --gradient-start: #007bff; /* Start color for highlight gradient */
+      --gradient-end: #00aaff;   /* End color for highlight gradient */
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
+      color: var(--text-color);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      overflow-x: hidden; /* Prevent horizontal scroll on some mobile devices */
+    }
+
+    .about-container {
+      max-width: 800px;
+      width: 100%;
+      background-color: var(--card-background);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px var(--shadow-light);
+      text-align: center;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      animation: fadeIn 1s ease-out forwards; /* Use forwards to keep the final state */
+    }
+
+    .about-container:hover {
+      transform: translateY(-8px); /* Slightly more lift */
+      box-shadow: 0 20px 45px var(--shadow-medium); /* Larger, more pronounced shadow */
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    p {
+      line-height: 1.8;
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      text-align: justify;
+      color: var(--secondary-color);
+    }
+
+    .highlight {
+      font-weight: 600;
+      background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      display: inline-block; /* Essential for background-clip to work correctly */
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease; /* More comprehensive transition */
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2); /* Subtle initial shadow */
+    }
+
+    .back-link:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); /* Enhanced shadow on hover */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+
+      .about-container {
+        padding: 30px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="about-container">
+    <h1>Tentang Saya</h1>
+    <p>
+      Halo! Nama saya <span class="highlight">Marwan Kosasih</span>, seorang mahasiswa <span class="highlight">Teknik Informatika</span> di <span class="highlight">Universitas Pamulang</span> yang saat ini sedang menjalani masa perkuliahan dengan semangat tinggi dan tekad untuk terus berkembang di bidang teknologi.
+    </p>
+    <p>
+      Saya memiliki minat besar dalam <span class="highlight">pengembangan web</span>, <span class="highlight">desain digital</span>, serta pemrograman berbasis aplikasi. Saya percaya bahwa teknologi memiliki kekuatan untuk menciptakan solusi yang memudahkan kehidupan masyarakat.
+    </p>
+    <p>
+      Dalam perjalanan akademik saya, saya telah mempelajari berbagai materi seperti struktur data, algoritma, pengembangan web, dan basis data. Selain itu, saya aktif terlibat dalam kegiatan proyek praktis untuk terus meningkatkan pengalaman saya di dunia nyata.
+    </p>
+    <p>
+      Harapan saya ke depan adalah menjadi seorang pengembang web profesional yang mampu memberikan kontribusi nyata di dunia industri dan pendidikan.
+    </p>
+
+    <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+  </div>
+
+</body>
+</html>
